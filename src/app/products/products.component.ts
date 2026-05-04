@@ -18,5 +18,12 @@ export class ProductsComponent implements OnInit {
     { id: 3, name: 'Keyboard', price: 45, selected:true}
   ];
  }
+ handledelete(product:any):void{
+  let v = confirm("Are you sure to delete this product?")
+  if(v==true){
+    this.products=this.products.filter((p:any)=>p.id!==product.id)
+  }
+  
+ }
 
 }
