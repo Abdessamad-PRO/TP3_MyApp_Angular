@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class ProductsComponent {
+  products = [
+    { id: 1, name: 'Laptop', price: 1200, selected:true },
+    { id: 2, name: 'Mouse', price: 25, selected:false},
+    { id: 3, name: 'Keyboard', price: 45, selected:true}
+  ];
+
 
 }
