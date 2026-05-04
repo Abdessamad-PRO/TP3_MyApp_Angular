@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-products',
   imports: [],
@@ -9,14 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
   products! :any ;
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
  ngOnInit(): void {
-     this.products=[
-    { id: 1, name: 'Laptop', price: 1200, selected:true },
-    { id: 2, name: 'Mouse', price: 25, selected:false},
-    { id: 3, name: 'Keyboard', price: 45, selected:true}
-  ];
+     
  }
  handledelete(product:any):void{
   let v = confirm("Are you sure to delete this product?")
