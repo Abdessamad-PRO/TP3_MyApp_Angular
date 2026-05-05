@@ -9,15 +9,26 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
   products! :any ;
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) { }  //injection des dépendaces
 
  ngOnInit(): void {
-     
+     this.getAllProducts();
+ }
+ getAllProducts():void{
+  // this.products=this.productService.getAllProducts();
+
+  this.productService.getAllProducts().subscribe({
+    next:resp=>{this.products=resp},
+    error:err=>{console.log(err)},
+  })
  }
  handledelete(product:any):void{
   let v = confirm("Are you sure to delete this product?")
   if(v==true){
-    this.products=this.products.filter((p:any)=>p.id!==product.id)
+    this.productService.deleteProduct(product).subscribe({
+      next:value=>{this.getAllProducts()},
+      error:err=>{console.log(err)}
+    });
   }
   
  }
